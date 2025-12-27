@@ -40,10 +40,7 @@ export function CardView({ card, isLoading, isHolo, label }: CardViewProps) {
             <div className="relative w-full h-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src={(() => {
-                        const rawPath = (card as any).imageUrl || card.image_path.replace(/^.*public/, '');
-                        return rawPath.startsWith('/app/calendar') ? rawPath : `/app/calendar${rawPath.startsWith('/') ? '' : '/'}${rawPath}`;
-                    })()}
+                    src={(card as any).imageUrl || card.image_path.replace(/^.*public/, '')}
                     alt={card.model}
                     className="w-full h-full object-cover"
                 />
