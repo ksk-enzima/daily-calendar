@@ -60,7 +60,7 @@ function HomeContent() {
 
   const fetchCard = async (date: string) => {
     try {
-      const res = await fetch(`/api/card?date=${date}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || '/app/calendar'}/api/card?date=${date}`);
       if (!res.ok) return null; // Handle error/generating
       if (res.status === 202) {
         // Generating... could poll, but for now simple fallback
