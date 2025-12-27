@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-outfit);
+}
+
 :root {
-  --background: #ffffff;
+  --background: #fdfbf7; /* Warm white */
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+/* Custom premium gradients */
+.bg-gradient-premium {
+  background: linear-gradient(135deg, #fdfbf7 0%, #e2e8f0 100%);
+}
+
+.bg-gradient-holo {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.1),
+    rgba(255, 154, 0, 0.1),
+    rgba(208, 222, 33, 0.1),
+    rgba(79, 220, 74, 0.1),
+    rgba(63, 218, 216, 0.1),
+    rgba(47, 201, 226, 0.1),
+    rgba(28, 127, 238, 0.1),
+    rgba(95, 21, 242, 0.1),
+    rgba(186, 12, 248, 0.1),
+    rgba(251, 7, 217, 0.1),
+    rgba(255, 0, 0, 0.1)
+  );
+  background-size: 200% 200%;
+  animation: rainbow 10s ease infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Paper Tear Animation Utils */
+.tear-mask {
+  mask-image: url("data:image/svg+xml,..."); /* Can add jagged edge svg later if needed */
 }
